@@ -1,0 +1,49 @@
+.userMain {
+	@borderLine: 1px solid #f3f3f3;
+	.leftPanel {
+		border-right: @borderLine;
+		.userInfo {
+			text-align: center;
+			.userAvatar {
+				width: 100px;
+				height: 100px;
+				background: #ddd;
+				margin: auto;
+			}
+			.userToolKit {
+				margin-top: 10px;
+			}
+		}
+		.userAdminList {
+			margin: 20px auto;
+			width: 150px;
+			border: @borderLine;
+			padding-top: 20px;
+			ul li {
+				list-style: none;
+				height: 30px;
+				line-height: 30px;
+			}
+			ul.adminGroup {
+				margin: auto;
+				margin-bottom:10px;
+				width: 80px;
+				li {
+					a {
+						color: #000;
+					}
+					&.active a {
+						color: #00A0E3;
+					}
+					&.groupTitle {
+						font-size: 14px;
+					}
+					&.groupItem {
+						font-size: 13px;
+						margin-left: 20px;
+					}
+				}
+			}
+		}
+	}
+}

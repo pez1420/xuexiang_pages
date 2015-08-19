@@ -1,0 +1,14 @@
+{
+  "name": "bower-lib",
+  "version": "0.1.0",
+  "ignore": [
+    ".jshintrc",
+    "**/*.txt"
+  ],
+  "dependencies": {
+  },
+  "devDependencies": {
+    "jquery": "",
+    "bootstrap": "~3.3.4"
+  }
+}

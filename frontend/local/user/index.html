@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="xxApp">
+<head>
+	<meta charset="UTF-8">
+	<meta name=”viewport” content=”width=device-width, initial-scale=1″>
+	<link rel="stylesheet" type="text/css" href="../dist/xuexiang.min.css">
+	<title>留学后</title>
+</head>
+<body ng-cloak>
+	<head-bar></head-bar>
+	<div class="container userMain">
+		<div class="leftPanel col-sm-3">
+			<div class="userInfo">
+				<div class="userAvatar img-circle"></div>
+				<div class="userName"></div>
+				<div class="userMajor"></div>
+				<div class="userToolKit">
+					<button>退出</button>
+				</div>
+			</div>
+			<div class="userAdminList">
+				<ul class="adminGroup">
+					<li class="groupTitle">我的笔记</li>
+					<li class="groupItem"><a>我的收藏</a></li>
+					<li class="groupItem"><a>我的上传</a></li>
+				</ul>
+				<ul class="adminGroup">
+					<li class="groupTitle">我的举手问</li>
+					<li class="groupItem"><a>我的提问</a></li>
+					<li class="groupItem"><a>我的回答</a></li>
+				</ul>
+				<ul class="adminGroup">
+					<li class="groupTitle">关注的人</li>
+					<li class="groupItem"><a>我的导师</a></li>
+					<li class="groupItem"><a>我的学生</a></li>
+				</ul>
+				<ul class="adminGroup hide">
+					<li class="groupTitle">我的课程</li>
+					<li class="groupItem"><a>我的预约</a></li>
+					<li class="groupItem"><a>我的发布</a></li>
+				</ul>
+				<ul class="adminGroup hide">
+					<li class="groupTitle">我的订单</li>
+					<li class="groupItem"><a>预约订单</a></li>
+					<li class="groupItem"><a>授课订单</a></li>
+				</ul>
+				<ul class="adminGroup">
+					<li class="groupTitle">个人资料</li>
+					<li class="groupItem"><a href="../user/userInfo.html">个人信息</a></li>
+				</ul>
+				<ul class="adminGroup">
+					<li class="groupTitle">账户安全</li>
+					<li class="groupItem hide"><a>资金账户</a></li>
+					<li class="groupItem"><a>修改密码</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="rightPanel col-sm-9"></div>
+	</div>
+	<footer-panel></footer-panel>
+
+	<script type="text/javascript" src="../dist/xuexiang.vendor.min.js"></script>
+	<script type="text/javascript" src="../dist/xuexiang.min.js"></script>
+	<script src="http://localhost:35729/livereload.js"></script>
+</body>
+</html>

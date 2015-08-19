@@ -1,0 +1,317 @@
+.noteMain {
+	@MobileDeviceWidth: 768px;
+	@SearchInputBackground: #fff;
+	@searchInputColor: rgb(222, 230, 235);
+	@borderLine: 1px solid #f3f3f3;
+	@smallTitleFont: 13px arial;
+	@noteTitleFont: bold 16px arial;
+	.leftPanel {
+		.keyWordSearch {
+			ul {
+				border: none;
+				li a {
+					padding:5px 15px;
+					border-radius: 0;
+					border-color: #dee6eb;
+				}
+			}
+			.search-input {
+				float: left;
+				input {
+					width: 100%;
+					padding: 0 10px;
+					height: 32px;
+					border: 2px solid @searchInputColor;
+					background: @SearchInputBackground;
+					border-right: none;
+				}
+				span {
+					border-radius: 0;
+					background: #fff;
+					border-color: @searchInputColor;
+					border-width: 2px;
+					color: @searchInputColor;
+					padding: 0;
+					cursor: pointer;
+					i {
+						border-left: 1px solid;
+						padding: 2px 10px;
+					}
+				}
+			}
+			.uploadNotes {
+				text-align: right;
+				.btn {
+					background: rgb(255, 187, 56);
+					color: #fff;
+					&:hover {
+						opacity: 0.5;
+					}
+				}
+			}
+			.hotTags {
+				margin-top: 10px;
+				span {
+					margin-right: 20px;
+					font-size: 12px;
+				}
+			}
+		}
+		.classificationSearch {
+			margin-top: 20px;
+			.title {
+				font: @smallTitleFont;
+				padding-bottom: 5px;
+			}
+			.content {
+				padding: 5px;
+				background: rgb(247, 249, 250);
+				ul.simpleSubjectMenu {
+					margin: 0;
+					height: 115px;
+					overflow: hidden;
+					li {
+						  position: relative;
+						  width: 23%;
+						  min-height: 100px;
+						  float: left;
+						  text-align: center;
+						  vertical-align: middle;
+						  cursor: pointer;
+						  list-style: none;
+						  margin: 1%;
+						&.odd {
+							background: #ddd;
+						}
+						&.even {
+							background: #fff;
+						}
+						.className {
+						  	margin-top: 50px;
+						}
+					}
+					.subClasses {
+						background: rgb(237, 241, 244);
+						a {
+							float: left;
+							display: block;
+						 	width: 40%;
+						  	padding-top: 5px;
+						  	margin-left: 5%;
+						  	margin-right: 5%;
+						}
+					}
+				}
+
+				ul.subjectMenu {
+					li {
+						position: relative;
+						width: 23%;
+						min-height: 100px;
+						float: left;
+						text-align: center;
+						vertical-align: middle;
+						cursor: pointer;
+						list-style: none;
+						margin: 1%;
+						span {
+							font-weight: bold;
+						}
+						a {
+							float: left;
+							display: block;
+						 	width: 40%;
+						  	padding-top: 5px;
+						  	margin-left: 5%;
+						  	margin-right: 5%;
+						}
+					}
+				}
+				
+				.expandSearch {
+					text-align: center;
+					color: #666;
+					width: 100%;
+					cursor: pointer;
+					&:hover {
+						color: #000;
+					}
+				}
+			}
+		}
+		.hotNotesPanel {
+			margin-top: 20px;
+			.title {
+				font: @smallTitleFont;
+				width: 100%;
+				padding-bottom: 5px;
+				border-bottom: @borderLine;
+			}
+			.filterPanel {
+				background: #f9f9f9;
+				.filterHead {
+					margin: 10px 0;
+				}
+				ol {
+					li {
+						padding: 5px 10px;
+					}
+				}
+			}
+			.hotNote {
+				padding: 10px 0;
+				border-bottom: @borderLine;
+				position: relative;
+				.userInfo {
+					text-align: center;
+					border-right: @borderLine;
+					.userAvatar {
+						height: 50px;
+						width: 50px;
+						border-radius: 25px;
+						background: #00a0e3;
+						margin: auto;
+					}
+					.userName {
+						padding: 10px 0;
+					}
+					.followBtn {
+						width: 60px;
+					  	border: @borderLine;
+					  	padding: 2px;
+					  	margin: auto;
+					  	margin-top: 5px;
+					  	color: rgb(255, 128, 0);
+					  	cursor: pointer;
+					  	&:hover {
+					  		background: #f3f3f3;
+					  	}
+					}
+				}
+				.noteInfo {
+					.noteHead {
+						padding: 5px 0;
+						.noteTitle {
+							float: left;
+							font: @noteTitleFont;
+						}
+						.noteTags {
+							float: right;
+							span {
+								float: left;
+								margin-left: 10px;
+								cursor: pointer;
+								&.tag {
+									border: @borderLine;
+									padding: 0px 5px;
+								}
+								&:hover {
+									background: rgb(245, 247, 248);
+								}
+							}
+						}
+					}
+					.noteAbstract {
+						padding: 10px 0;
+					}
+				}
+				.noteToolKit {
+				  	text-align: right;
+				  	position: absolute;
+			  		bottom: 10px;
+				  	right: 10px;
+					span {
+						padding: 5px 10px;
+						background: rgb(245, 247, 248);
+						cursor: pointer;
+						&.handsUp {
+							i {
+								color: rgb(137, 184, 237);
+							}
+						}
+						&.favorite {
+							i {
+								color: rgb(255, 112, 138);
+							}
+						}
+						i {
+							margin-right: 2px;
+						}
+					}
+				}
+			}
+		}
+	}
+	.rightPanel {
+		@media (min-width:@MobileDeviceWidth) {
+			border-left: @borderLine;
+		}
+		.rightPanelTitle {
+			font: @smallTitleFont;
+			margin: 10px 0;
+			.refresh {
+				margin-right: 20px;
+			}
+		}
+		.hotMentors {
+			background: rgb(249, 249, 249);
+			padding: 10px 0;
+			.mentorList {
+				.seperator {
+					width: 90%;
+				  	margin: 10px auto;
+				  	border-top: 1px solid #dee6eb;
+				}
+				.mentor {
+				  	float: left;
+				  	width: 30%;
+				  	height: 170px;
+				  	margin-left: 3%;
+				  	text-align: center;
+				  	position: relative;
+				  	margin-top: 20px;
+						.userAvatar {
+						height: 50px;
+						width: 50px;
+						border-radius: 25px;
+						background: #00a0e3;
+						margin: auto;
+					}
+					.userName {
+						padding: 10px 0;
+					}
+					.followBtn {
+						width: 70%;
+					  	border: @borderLine;
+					  	padding: 2px;
+					  	position: absolute;
+					  	bottom: 10px;
+					  	left: 15%;
+					  	color: rgb(255, 128, 0);
+					  	cursor: pointer;
+					  	background: #fff;
+					  	&:hover {
+					  		background: #f3f3f3;
+					  	}
+					}
+					@media (max-width:@MobileDeviceWidth) {
+						.followBtn {
+							width: 30%;
+							left: 35%;
+						}
+					}
+				}
+			}
+		}
+		.relatedNotes {
+			margin-top: 20px;
+			.note {
+				padding: 10px 0;
+				border-bottom: @borderLine;
+				.favoriteCount {
+					color: #00b0f0;
+				}
+			}
+		}
+	}
+}

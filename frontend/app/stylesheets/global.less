@@ -1,0 +1,99 @@
+body {
+	@MobileDeviceWidth: 768px;
+	@LogoWidth: 20%;
+	@NavigationItemColor: #23527c;
+	@borderLine: 1px solid #f3f3f3;
+	a {
+		color: #00b0f0;
+	}
+	.centerContent {
+		width: 90%;
+		margin: 0 5%;
+	}
+	@media (min-width:@MobileDeviceWidth) {
+		.container {
+			width: 100%;
+			.navbar-header {
+				width: @LogoWidth;
+			}
+		}
+	}
+	header {
+		background: #00a0e3;
+		.container {
+			.navbar-header {
+				.navbar-toggle {
+					.icon-bar {
+						background-color: #000
+					}
+					&:hover {
+						background-color: #f9f9f9;
+						border-color: #f9f9f9;
+					}
+				}
+				.navbar-brand {
+					color: #fff;
+				}
+			}
+			nav {
+				ul li {
+					@media (min-width:@MobileDeviceWidth) {
+						&.seperator {
+							width: 1px;
+							background: @NavigationItemColor;
+						  	height: 20px;
+						  	margin: 15px 0;
+						}
+					}
+					a:hover, &.active {
+						background: #00b0f0;
+						color: #fff;
+					}
+					a {
+						color: #fff;
+					}	
+				}
+				.headToolKit {
+					float: right;
+					li {
+						float: left;
+						list-style: none;
+						a {
+							color: #fff;
+							padding: 15px;
+							&:hover {
+								background: @NavigationItemColor;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	#loginModal {
+		.modal-header {
+			ul li {
+				&.active a {
+					color: #000;
+				}
+			}
+		}
+	}
+	footer {
+		margin-top: 20px;
+		border-top: @borderLine;
+		.container {
+			.centerContent;
+			.row {
+				padding: 20px 0;
+				span {
+					margin-right: 20px;
+				}
+				border-bottom: @borderLine;
+				.pull-right {
+					text-align: right;
+				}
+			}
+		}
+	}
+}

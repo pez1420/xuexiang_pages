@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="xxApp">
+<head>
+	<meta charset="UTF-8">
+	<meta name=”viewport” content=”width=device-width, initial-scale=1″>
+	<link rel="stylesheet" type="text/css" href="../dist/xuexiang.min.css">
+	<title>留学后</title>
+</head>
+<body ng-cloak>
+	<head-bar></head-bar>
+  	<div class="container noteMain" ng-controller="noteController as noteCtrl">
+  		<div class="leftPanel col-sm-9">
+	  		<div class="keyWordSearch clearfix">
+	  			<ul class="nav nav-tabs">
+				  <li ng-repeat="option in noteCtrl.model.searchOptions.searchByList" role="presentation" ng-class="option.id === noteCtrl.model.searchOptions.searchBy?'active':''" ng-click="noteCtrl.model.searchOptions.searchBy=option.id"><a ng-bind="option.name" ></a></li>
+				</ul>
+	  			<div class="search-input input-group col-md-9">
+	  				<input type="text" placeholder="搜索笔记" ng-keyup="noteCtrl.onSearch($event)" ng-model="noteCtrl.model.searchOptions.searchKey"/>
+	  				<span class="input-group-addon" ng-click="noteCtrl.search(noteCtrl.model.searchOptions.searchBy, noteCtrl.model.searchOptions.searchKey)">
+	  					<i class="glyphicon glyphicon-search"></i>
+	  				</span>
+	  			</div>
+
+	  			<div class="uploadNotes col-md-3">
+	  				<div class="btn">上传笔记</div>
+	  			</div>
+	  			
+	  			<div class="hotTags">
+	  				<span>热门搜索：</span>
+	  				<span><a>经济学</a></span>
+	  				<span><a>会计学</a></span>
+	  				<span><a>c++</a></span>
+	  				<span><a>高等数学</a></span>
+	  			</div>
+	  		</div>
+	  		<div class="classificationSearch" ng-mouseleave="noteCtrl.resetClassification()">
+	  			<div class="title"> > 搜索分类</div>
+	  			<div class="content">
+	  				<ul class="simpleSubjectMenu" ng-if="noteCtrl.model.subjectMenuCollapsed">
+			  			<li ng-repeat-start="class in noteCtrl.model.classifications" class="economic odd" ng-if="!class.onHover" ng-mouseover="noteCtrl.onClassificationHover(class)">
+			  				<a class="className" ng-bind="class.name"></a>
+			  			</li>
+			  			<li class="subClasses" ng-repeat-end ng-show="class.onHover" ng-mouseleave="noteCtrl.onClassificationLeave(class)">
+			  				<a ng-repeat="subClass in class.subClasses" ng-bind="subClass.name" ng-class-even="clear"></a>
+			  			</li>
+		  			</ul>
+		  			<ul class="subjectMenu view-slide-in" ng-if="!noteCtrl.model.subjectMenuCollapsed">
+		  				<li ng-repeat="subject in noteCtrl.model.allSubjects">
+		  					<h4 ng-bind="subject.name"></h4>
+		  					<a ng-repeat="item in subject.allItems track by $index" ng-bind="item"></a>
+		  				</li>
+		  			</ul>
+		  			<div class="clear"></div>
+		  			<div class="expandSearch" ng-click="noteCtrl.toggleSubjectMenu()">
+		  				<i class="glyphicon" ng-class="noteCtrl.model.subjectMenuCollapsed?'glyphicon-menu-down':'glyphicon-menu-up'"></i>
+		  			</div>
+	  			</div>
+	  		</div>
+	  		<div class="hotNotesPanel">
+	  			<div class="title" ng-bind="noteCtrl.model.searchOptions.searchComplete?' > 找到的笔记':' > 热门笔记'"></div>
+	  			<div class="row clearfix">
+	  				<div class="filterPanel col-md-3" ng-if="noteCtrl.model.searchOptions.searchComplete">
+	  					<div class="filterHead"> > 按学校</div>
+	  					<ol class="list-unstyled">
+	  						<li><a>哈佛大学 (122)</a></li>
+	  						<li><a>剑桥大学 (85)</a></li>
+	  						<li><a>南洋理工大学 (33)</a></li>
+	  						<li><a>MIT (30)</a></li>
+	  						<li><a>其它 (11)</a></li>
+	  					</ol>
+	  					<div class="filterHead"> > 按专业</div>
+	  					<ol class="list-unstyled">
+	  						<li><a>经济学 (22)</a></li>
+	  						<li><a>会计学 (12)</a></li>
+	  						<li><a>国际货币基金学 (9)</a></li>
+	  						<li><a>金融 (7)</a></li>
+	  						<li><a>其它 (3)</a></li>
+	  					</ol>
+	  					<div class="filterHead"> > 按类别</div>
+	  					<ol class="list-unstyled">
+	  						<li><a>课堂笔记 (145)</a></li>
+	  						<li><a>考前笔记 (35)</a></li>
+	  						<li><a>考题分享 (10)</a></li>
+	  					</ol>
+	  				</div>
+	  				<div ng-class="noteCtrl.model.searchOptions.searchComplete?'col-md-9':'col-md-12'">
+	  					<div class="hotNote row" ng-repeat="note in noteCtrl.model.hotNotes">
+			  				<div class="col-md-2 userInfo">
+			  					<div class="userAvatar"></div>
+			  					<div class="userName" ng-bind="note.author.name"></div>
+			  					<div class="userSchool" ng-bind="note.author.school+' - '+note.author.major"></div>
+			  					<div class="followBtn" ng-bind="note.author.followed?'已关注':'+关注'" ng-click="note.author.followed=!note.author.followed"></div>
+			  				</div>
+			  				<div class="noteInfo col-md-10">
+			  					<div class="noteHead clearfix">
+			  						<div class="noteTitle" ng-bind="note.title"></div>
+			  						<div class="noteTags clearfix">
+			  							<!-- <span>标签： </span> -->
+			  							<span class="tag" ng-repeat="tag in note.tags" ng-bind="tag"></span>
+			  						</div>
+			  					</div>
+			  					<div class="noteAbstract" ng-bind="note.abstract"></div>
+			  					<div class="noteSnapshots"></div>
+			  				</div>
+		  					<div class="noteToolKit">
+		  						<span class="handsUp"><i class="glyphicon glyphicon-hand-up"></i>举手问</span>
+		  						<span class="favorite"><i class="glyphicon glyphicon-heart"></i>收藏</span>
+		  					</div>
+			  			</div>
+	  				</div>
+	  			</div>
+	  		</div>
+	  	</div>
+  		<div class="rightPanel col-sm-3">
+  			<div class="bigThumb">
+  				<img alt="big logo"/>
+  			</div>
+	  		<div class="hotMentors">
+	  			<div class="rightPanelTitle"> 
+	  				<span> > 热门导师推荐</span>
+	  				<span class="refresh pull-right"><a>换一批</a></span>
+	  			</div>
+	  			<div class="mentorList clearfix">
+	  				<div class="mentor" ng-repeat="mentor in noteCtrl.model.hotMentors" ng-if="$index<3">
+	  					<div class="userAvatar"></div>
+	  					<div class="userName" ng-bind="mentor.name"></div>
+	  					<div class="userSchool" ng-bind="mentor.school"></div>
+	  					<div class="followBtn" ng-bind="mentor.followed?'已关注':'＋关注'" ng-click="mentor.followed=!mentor.followed"></div>
+	  				</div>
+	  				<div class="clear"></div>
+	  				<div class="seperator"></div>
+	  				<div class="mentor" ng-repeat="mentor in noteCtrl.model.hotMentors" ng-if="$index>=3">
+	  					<div class="userAvatar"></div>
+	  					<div class="userName" ng-bind="mentor.name"></div>
+	  					<div class="userSchool" ng-bind="mentor.school"></div>
+	  					<div class="followBtn" ng-bind="mentor.followed?'已关注':'＋关注'" ng-click="mentor.followed=!mentor.followed"></div>
+	  				</div>
+	  			</div>
+	  		</div>
+	  		<div class="relatedNotes">
+	  			<div class="rightPanelTitle"> 
+	  				<span> > 相关笔记推荐</span>
+	  				<span class="pull-right"><a>换一批</a></span>
+	  			</div>
+	  			<div class="noteList">
+	  				<div class="note" ng-repeat="note in noteCtrl.model.relatedNotes">
+	  					<div class="userName" ng-bind="note.author.name"></div>
+	  					<div class="title" ng-bind="note.title"></div>
+	  					<div class="favoriteCount" ng-bind="'收藏次数： '+note.favoriteCount"></div>
+	  				</div>
+	  			</div>
+	  		</div>
+	  	</div>
+  	</div>
+	<footer-panel></footer-panel>
+
+	<script type="text/javascript" src="../dist/xuexiang.vendor.min.js"></script>
+	<script type="text/javascript" src="../dist/xuexiang.min.js"></script>
+	<script src="http://localhost:35729/livereload.js"></script>
+</body>
+</html>
